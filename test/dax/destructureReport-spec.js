@@ -2,6 +2,7 @@ var expect = require('chai').expect;
 
 var destructureReport = require('../../lib/dax/destructureReport');
 var sampleDaxReport = require('../fixtures/sampleDaxReport.json');
+var expectedDestructuredReport = require('../fixtures/expectedDestructuredReport.json');
 
 describe('Destructure Report', function() {
 
@@ -12,11 +13,18 @@ describe('Destructure Report', function() {
 	});
 
 	it('should correctly extract the title from the DAX report', function() {
-		expect(report.title).to.equal('Experimental Support - Brightness - pass');
+		expect(report.title).to.equal(expectedDestructuredReport.title);
 	});
 
 	it('should correctly extract the column headings from the DAX report', function() {
-		var expectedColumnHeadings = ['app_version', 'brand', 'model', 'Action type', 'Action name', 'pass', 'Browsers', 'Hidden events'];
-		expect(report.columnHeadings).to.deep.equal(expectedColumnHeadings);
+		expect(report.columnHeadings).to.deep.equal(expectedDestructuredReport.columnHeadings);
+	});
+
+	it('should correctly extract the rows from the DAX report', function() {
+		expect(report.rows).to.deep.equal(expectedDestructuredReport.rows);
+	});
+
+	it('should correctly destructure the whole report', function() {
+		expect(report).to.deep.equal(expectedDestructuredReport);
 	});
 });

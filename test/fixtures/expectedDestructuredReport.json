@@ -1,0 +1,68 @@
+{
+	"title": "Experimental Support - Brightness - pass",
+	"columnHeadings": ["app_version",
+		"brand",
+		"model",
+		"Action type",
+		"Action name",
+		"pass",
+		"Browsers",
+		"Hidden events"
+	],
+	"rows": [
+		["4.5.3.6",
+			"anna",
+			"stb",
+			"experiment",
+			"brightness",
+			"true",
+			"11195",
+			"13324"
+		],
+		["4.5.3.6",
+			"beatrice",
+			"opera",
+			"experiment",
+			"brightness",
+			"true",
+			"5851",
+			"6214"
+		],
+		["4.5.3.6",
+			"charlie",
+			"tv",
+			"experiment",
+			"brightness",
+			"true",
+			"3093",
+			"3606"
+		],
+		["4.5.3.6",
+			"dianne",
+			"box",
+			"experiment",
+			"brightness",
+			"false",
+			"95",
+			"113"
+		],
+		["4.5.3.6",
+			"edgar",
+			"stick",
+			"experiment",
+			"brightness",
+			"true",
+			"1626",
+			"1765"
+		],
+		["4.5.3.6",
+			"edgar",
+			"stick",
+			"experiment",
+			"brightness",
+			"false",
+			"5456",
+			"6122"
+		]
+	]
+}
