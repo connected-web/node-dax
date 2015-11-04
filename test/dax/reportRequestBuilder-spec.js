@@ -31,4 +31,21 @@ describe('Build a Report Request', function() {
 		};
 		expect(actual).to.deep.equal(expected);
 	});
+
+	it('should build report parameters passed into builder', function() {
+		var reportItemId = 5555;
+		var actual = buildReportRequest(reportItemId, {
+			"a": "one",
+			"b": "two",
+			"c": "three",
+			"d": "four",
+			"e": "five"
+		});
+		var expected = {
+			uri: 'https://dax-rest.comscore.eu/v1/reportitems.json',
+			method: 'POST',
+			body: 'parameters=a:one|b:two|c:three|d:four|e:five&itemid=' + reportItemId + '&startdate=today-14&enddate=today-1&site=&client=&user=&password='
+		};
+		expect(actual).to.deep.equal(expected);
+	});
 });
