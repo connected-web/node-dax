@@ -1,0 +1,74 @@
+{
+	"reportitems": {
+		"@count": "1",
+		"reportitem": [{
+			"columns": {
+				"@count": "8",
+				"column": [{
+					"ctitle": "app_version",
+					"type": "string",
+					"alignment": "left"
+				}, {
+					"ctitle": "brand",
+					"type": "string",
+					"alignment": "left"
+				}, {
+					"ctitle": "model",
+					"type": "string",
+					"alignment": "left"
+				}, {
+					"ctitle": "Action type",
+					"type": "string",
+					"alignment": "left"
+				}, {
+					"ctitle": "Action name",
+					"type": "string",
+					"alignment": "left"
+				}, {
+					"ctitle": "pass",
+					"type": "string",
+					"alignment": "left"
+				}, {
+					"ctitle": "Browsers",
+					"type": "integer",
+					"alignment": "right"
+				}, {
+					"ctitle": "Hidden events",
+					"type": "integer",
+					"alignment": "right"
+				}]
+			},
+			"title": "Experimental Support - Brightness - pass",
+			"statistics": {
+				"total": {
+					"c": ["", "", "", "", "", "", "", ""]
+				},
+				"maximum": {
+					"c": ["", "", "", "", "", "", "", ""]
+				},
+				"average": {
+					"c": ["", "", "", "", "", "", "", ""]
+				},
+				"minimum": {
+					"c": ["", "", "", "", "", "", "", ""]
+				}
+			},
+			"rows": {
+				"@count": "5",
+				"r": [{
+					"c": ["4.5.3.6", "anna", "stb", "experiment", "brightness", "true", "11195", "13324"]
+				}, {
+					"c": ["4.5.3.6", "beatrice", "opera", "experiment", "brightness", "true", "5851", "6214"]
+				}, {
+					"c": ["4.5.3.6", "charlie", "tv", "experiment", "brightness", "true", "3093", "3606"]
+				}, {
+					"c": ["4.5.3.6", "dianne", "box", "experiment", "brightness", "false", "95", "113"]
+				}, {
+					"c": ["4.5.3.6", "edgar", "stick", "experiment", "brightness", "true", "1626", "1765"]
+				}, {
+					"c": ["4.5.3.6", "edgar", "stick", "experiment", "brightness", "false", "5456", "6122"]
+				}]
+			}
+		}]
+	}
+}
