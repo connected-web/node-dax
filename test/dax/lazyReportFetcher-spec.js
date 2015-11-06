@@ -1,4 +1,8 @@
-var expect = require('chai').expect;
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+var expect = chai.expect;
+
 var fs = require('fs');
 
 var fetchReport = require('../../lib/dax/lazyReportFetcher');
@@ -18,10 +22,8 @@ describe('Lazy Report Fetcher', function() {
 		fs.writeFileSync(sampleCachedFile, JSON.stringify(sampleDaxReport, null, 2), 'utf8');
 	});
 
-	it('should return the contents of a local file, if it exists', function(done) {
-		fetchReport('lazyReportFetcherTest', reportRequest, cacheDirectory).then(function(value) {
-			expect(value).to.deep.equal(sampleDaxReport);
-      done();
-		}).catch(done);
+	it('should return the contents of a local file, if it exists', function() {
+		return expect(fetchReport('lazyReportFetcherTest', reportRequest, cacheDirectory))
+			.to.eventually.deep.equal(sampleDaxReport);
 	});
 });

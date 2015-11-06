@@ -1,18 +1,19 @@
 {
-  "name": "node-dax",
-  "version": "1.0.0",
-  "description": "A node js library for making queries to DAX",
-  "main": "index.js",
-  "scripts": {
-    "test": "node node_modules/mocha/bin/mocha --recursive"
-  },
-  "author": "John Beech",
-  "license": "UNLICENSED",
-  "devDependencies": {
-    "chai": "^3.4.0",
-    "mocha": "^2.3.3"
-  },
-  "dependencies": {
-    "request": "^2.65.0"
-  }
+	"name": "node-dax",
+	"version": "1.0.0",
+	"description": "A node js library for making queries to DAX",
+	"main": "index.js",
+	"scripts": {
+		"test": "node node_modules/mocha/bin/mocha --recursive"
+	},
+	"author": "John Beech",
+	"license": "UNLICENSED",
+	"devDependencies": {
+		"chai": "^3.4.0",
+		"mocha": "^2.3.3",
+		"chai-as-promised": "^5.1.0"
+	},
+	"dependencies": {
+		"request": "^2.65.0"
+	}
 }
