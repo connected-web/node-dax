@@ -47,8 +47,9 @@ describe('Lazy Report Fetcher', function() {
     });
 
     describe('Fetching data', function() {
-        var expectedRequest = reportRequest;
-        it('should make a request to the DAX API if if the file does not exist', function(done) {
+
+        it('should make a request to the DAX API if the file does not exist', function(done) {
+            var expectedRequest = reportRequest;
             var mockRequest = function(url) {
                 try {
                     expect(url).to.equal(expectedRequest);
@@ -58,6 +59,44 @@ describe('Lazy Report Fetcher', function() {
                 }
             };
             fetchReport('nonExistingFileFetchingDataTest', reportRequest, cacheDirectory, mockRequest);
+        });
+    });
+
+    describe('Writing data', function() {
+
+        var expectedTargetFile = cacheDirectory + '/fileToWriteTo.json';
+
+        beforeEach(function() {
+            try {
+                fs.unlinkSync(expectedTargetFile);
+            } catch (ex) {
+                expect(ex.code).to.equal('ENOENT');
+            }
+        });
+
+        it('should write data to the cache if received', function(done) {
+            var expectedName = 'fileToWriteTo';
+            var expectedData = {
+                some: 'valid data'
+            };
+
+            var mockRequest = function(url, callback) {
+                callback(null, null, JSON.stringify(expectedData));
+            };
+            var mockNotify = function(notificationName, notificationData, notificationTargetFile) {
+                try {
+                    expect(notificationName).to.equal(expectedName);
+                    expect(notificationData).to.deep.equal(expectedData);
+                    expect(notificationTargetFile).to.equal(expectedTargetFile);
+
+                    var actualData = require(expectedTargetFile);
+                    expect(actualData).to.deep.equal(expectedData);
+                    done();
+                } catch (ex) {
+                    done(ex);
+                }
+            };
+            fetchReport(expectedName, reportRequest, cacheDirectory, mockRequest, mockNotify);
         });
     });
 });
