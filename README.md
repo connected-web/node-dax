@@ -18,7 +18,7 @@ npm install node-dax --save
 
 ## Example
 
-```
+```js
 var dax = require('./index');
 dax.logger.enabled = false;
 
@@ -45,7 +45,7 @@ dax.fetchReport('demo', reportRequest).then(function(result) {
 
 ## API Methods
 
-```
+```js
 var api = require('node-dax');
 ```
 
