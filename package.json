@@ -1,13 +1,13 @@
 {
 	"name": "node-dax",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A node js library for making queries to DAX",
 	"main": "index.js",
 	"scripts": {
 		"test": "node node_modules/mocha/bin/mocha --recursive"
 	},
 	"author": "John Beech",
-	"license": "UNLICENSED",
+	"license": "ISC",
 	"devDependencies": {
 		"chai": "^3.4.0",
 		"mocha": "^2.3.3",
