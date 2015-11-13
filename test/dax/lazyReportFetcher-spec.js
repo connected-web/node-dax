@@ -30,14 +30,17 @@ describe('Lazy Report Fetcher', function() {
     });
 
     describe('Empty cache', function() {
-        var expectedErrorFragment = 'Error: ENOENT: no such file or directory, open ';
+        var expectedError = {
+            error: 'No data in cache; making separate request',
+            request: reportRequest
+        };
 
         it('should return an error, if the file is not cached', function(done) {
             fetchReport('nonExistingFileEmptyCacheTest', reportRequest, cacheDirectory).then(function(accept) {
                 done('Unexpected success: ' + accept);
-            }).catch(function(reject) {
+            }).catch(function(rejection) {
                 try {
-                    expect(reject.toString()).to.contain(expectedErrorFragment);
+                    expect(rejection).to.deep.equal(expectedError);
                     done();
                 } catch (ex) {
                     done(ex);
