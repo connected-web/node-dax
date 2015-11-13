@@ -2,9 +2,9 @@ var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
-
 var fs = require('fs');
 
+var inject = require('../../lib/wiring/inject');
 var fetchReport = require('../../lib/dax/lazyReportFetcher');
 var sampleDaxReport = require('../fixtures/sampleDaxReport.json');
 
@@ -48,6 +48,10 @@ describe('Lazy Report Fetcher', function() {
 
     describe('Fetching data', function() {
 
+        afterEach(function() {
+            inject('request', null);
+        });
+
         it('should make a request to the DAX API if the file does not exist', function(done) {
             var expectedRequest = reportRequest;
             var mockRequest = function(url) {
@@ -58,7 +62,8 @@ describe('Lazy Report Fetcher', function() {
                     done(ex);
                 }
             };
-            fetchReport('nonExistingFileFetchingDataTest', reportRequest, cacheDirectory, mockRequest);
+            inject('request', mockRequest);
+            fetchReport('nonExistingFileFetchingDataTest', reportRequest, cacheDirectory);
         });
     });
 
@@ -83,6 +88,7 @@ describe('Lazy Report Fetcher', function() {
             var mockRequest = function(url, callback) {
                 callback(null, null, JSON.stringify(expectedData));
             };
+            inject('request', mockRequest);
             var mockNotify = function(notificationName, notificationData, notificationTargetFile) {
                 try {
                     expect(notificationName).to.equal(expectedName);
@@ -96,7 +102,7 @@ describe('Lazy Report Fetcher', function() {
                     done(ex);
                 }
             };
-            fetchReport(expectedName, reportRequest, cacheDirectory, mockRequest, mockNotify);
+            fetchReport(expectedName, reportRequest, cacheDirectory, mockNotify);
         });
     });
 });

@@ -1,4 +1,5 @@
 var expect = require('chai').expect;
+var inject = require('../../lib/wiring/inject');
 var fetchReport = require('../../lib/dax/reportFetcher');
 
 describe('Report Fetcher', function() {
@@ -9,6 +10,10 @@ describe('Report Fetcher', function() {
         body: 'parameters=&itemid=&startdate=today-14&enddate=today-1&site=&client=&user=&password='
     };
 
+    afterEach(function() {
+        inject('request', null);
+    });
+
     it('should handle errors from the DAX API for invalid parameters', function(done) {
         var mockDAXResponse = {
             ERROR: 'Some error'
@@ -16,7 +21,8 @@ describe('Report Fetcher', function() {
         var mockRequest = function(url, callback) {
             callback(null, null, JSON.stringify(mockDAXResponse));
         };
-        fetchReport('uncachedFileTest', reportRequest, mockRequest)
+        inject('request', mockRequest);
+        fetchReport('uncachedFileTest', reportRequest)
             .then(done)
             .catch(function(actualError) {
                 try {
@@ -38,7 +44,8 @@ describe('Report Fetcher', function() {
         var mockRequest = function(url, callback) {
             callback(null, null, JSON.stringify(mockDAXResponse));
         };
-        fetchReport('uncachedFileTest', reportRequest, mockRequest)
+        inject('request', mockRequest);
+        fetchReport('uncachedFileTest', reportRequest)
             .then(function(response) {
                 try {
                     expect(response).to.deep.equal(mockDAXResponse);
