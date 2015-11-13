@@ -19,17 +19,18 @@ describe('Test File Age', function() {
         }).catch(done)
     });
 
-    it('should report file does not need updating, for file younger then limit', function(done) {
+    it('should report file does not need updating, for file younger than limit', function(done) {
+        var expectedLimitMs = 1000;
         var expected = {
             ageInMs: 0,
-            message: 'File is younger than 1000ms limit',
+            message: `File is younger than ${expectedLimitMs}ms limit`,
             recommendation: 'No update required'
         };
         var filePath = __dirname + '/../../daxCache/testFileAge.json';
         fs.writeFileSync(filePath, JSON.stringify({
             some: 'data'
         }), 'utf8');
-        testFileAge(filePath, 1000).then(done).catch(function(result) {
+        testFileAge(filePath, expectedLimitMs).then(done).catch(function(result) {
             try {
                 expect(result).to.have.property('message', expected.message);
                 expect(result).to.have.property('recommendation', expected.recommendation);
@@ -38,5 +39,30 @@ describe('Test File Age', function() {
                 done(ex);
             }
         });
+    });
+
+    it('should report file does need updating, for file older than limit', function(done) {
+        var expectedLimitMs = 10;
+        var expected = {
+            ageInMs: 0,
+            message: `File is older than ${expectedLimitMs}ms limit`,
+            recommendation: 'Update the file'
+        };
+        var filePath = __dirname + '/../../daxCache/testFileAge.json';
+        fs.writeFileSync(filePath, JSON.stringify({
+            some: 'data'
+        }), 'utf8');
+
+        setTimeout(function() {
+            testFileAge(filePath, expectedLimitMs).then(function(result) {
+                try {
+                    expect(result).to.have.property('message', expected.message);
+                    expect(result).to.have.property('recommendation', expected.recommendation);
+                    done();
+                } catch (ex) {
+                    done(ex);
+                }
+            }).catch(done);
+        }, expectedLimitMs + 1);
     });
 });
