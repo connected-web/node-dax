@@ -24,6 +24,10 @@ describe('Destructure Report', function() {
 		expect(report.rows).to.deep.equal(expectedDestructuredReport.rows);
 	});
 
+	it('should correctly extract the statistics from the DAX report', function() {
+		expect(report.statistics).to.deep.equal(expectedDestructuredReport.statistics);
+	});
+
 	it('should correctly destructure the whole report', function() {
 		expect(report).to.deep.equal(expectedDestructuredReport);
 	});
