@@ -72,3 +72,18 @@ Has three methods:
 Has two configurable properties:
 - `logger.enabled`, default `false`
 - `logger.target`, default `console`
+
+## Change Log
+
+### 1.0.4
+
+* Added support for statistics in Destructure Report
+
+### 1.0.3
+
+* Fully tested set of functions for accessing a basic DAX Report
+* Report Request Builder: create a workable DAX report request in the correct format
+* Report Fetcher: make a request to DAX and recognize basic errors
+* Lazy Report Fetcher: make requests to DAX using a local file cache
+* Destructure Report: remove unnecessary layers of object structure from report
+

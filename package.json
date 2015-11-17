@@ -1,6 +1,6 @@
 {
 	"name": "node-dax",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A node js library for making queries to DAX",
 	"main": "index.js",
 	"scripts": {
