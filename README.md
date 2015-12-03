@@ -55,7 +55,7 @@ Creates a DAX POST request, valid against the supplied parameters. DAX will tell
 ### `api.destructureReport(reportData)`
 Removes unnecessary layers of structuring from the data returned by DAX. Can be wired in to the output of `api.fetchReport` or `api.fetchReportNow`.
 
-### `api.fetchReport(name, reportRequest, storagePath, requester, notify)`
+### `api.fetchReport(name, reportRequest, storagePath, requester, notify, cacheTimeMs)`
 Lazily fetches a report based on the name, and reportRequest. It returns whatever is stored in a local file cache, or an error, and then goes away and tries to make the DAX report. The notify method will be called once the data is received and written to disk.
 
 ### `api.fetchReportNow(name, reportRequest, requester)`
