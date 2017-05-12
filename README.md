@@ -75,6 +75,10 @@ Has two configurable properties:
 
 ## Change Log
 
+### 1.1.0
+
+* Added `samplingrate` to request builder
+
 ### 1.0.4
 
 * Added support for statistics in Destructure Report
@@ -86,4 +90,3 @@ Has two configurable properties:
 * Report Fetcher: make a request to DAX and recognize basic errors
 * Lazy Report Fetcher: make requests to DAX using a local file cache
 * Destructure Report: remove unnecessary layers of object structure from report
-
