@@ -14,7 +14,7 @@ describe('Build a Report Request', function() {
 		var expected = {
 			uri: 'https://dax-rest.comscore.eu/v1/reportitems.json',
 			method: 'POST',
-			body: 'parameters=&itemid=&startdate=today-14&enddate=today-1&site=&client=&user=&password='
+			body: 'parameters=&itemid=&startdate=today-14&enddate=today-1&site=&client=&user=&password=&samplingrate=16'
 		};
 		expect(actual).to.deep.equal(expected);
 	});
@@ -27,7 +27,7 @@ describe('Build a Report Request', function() {
 		var expected = {
 			uri: 'https://dax-rest.comscore.eu/v1/reportitems.json',
 			method: 'POST',
-			body: 'parameters=&itemid=&startdate=today-14&enddate=today-1&site=&client=&user=EXPECTED_USER&password=EXPECTED_PASSWORD'
+			body: 'parameters=&itemid=&startdate=today-14&enddate=today-1&site=&client=&user=EXPECTED_USER&password=EXPECTED_PASSWORD&samplingrate=16'
 		};
 		expect(actual).to.deep.equal(expected);
 	});
@@ -44,7 +44,7 @@ describe('Build a Report Request', function() {
 		var expected = {
 			uri: 'https://dax-rest.comscore.eu/v1/reportitems.json',
 			method: 'POST',
-			body: 'parameters=a:one|b:two|c:three|d:four|e:five&itemid=' + reportItemId + '&startdate=today-14&enddate=today-1&site=&client=&user=&password='
+			body: 'parameters=a:one|b:two|c:three|d:four|e:five&itemid=' + reportItemId + '&startdate=today-14&enddate=today-1&site=&client=&user=&password=&samplingrate=16'
 		};
 		expect(actual).to.deep.equal(expected);
 	});

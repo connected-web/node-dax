@@ -13,7 +13,7 @@ describe('Lazy Report Fetcher', function() {
     var reportRequest = {
         uri: 'https://dax-rest.comscore.eu/v1/reportitems.json',
         method: 'POST',
-        body: 'parameters=&itemid=&startdate=today-14&enddate=today-1&site=&client=&user=&password='
+        body: 'parameters=&itemid=&startdate=today-14&enddate=today-1&site=&client=&user=&password=&samplingrate=16'
     };
     var cacheDirectory = __dirname + '/../../daxCache';
     var sampleCachedFile = cacheDirectory + '/lazyReportFetcherTest.json';

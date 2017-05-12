@@ -4,16 +4,17 @@ dax.logger.enabled = false;
 var NL = '\n';
 var TAB = '\t';
 
-var startDate = 'today-14';
-var endDate = 'today-1';
 var bucket = 'bucket';
 var client = 'client';
+var startDate = 'today-14';
+var endDate = 'today-1';
+var samplingRate = 1;
 
 var reportRequest = dax.requestBuilder(12345, {
     'name': 'demo.home.page',
     'app_name': 'demo',
     'app_type': 'example'
-}, bucket, client, startDate, endDate);
+}, bucket, client, startDate, endDate, samplingRate);
 
 console.info('Report Request:', reportRequest, NL);
 
